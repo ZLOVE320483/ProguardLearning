@@ -1,0 +1,13 @@
+def localRepo = "file://${rootProject.file('repos').path}"
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri(localRepo))
+            pom.groupId = "com.zlove.study.proguard"
+            pom.artifactId = "base-ui"
+            pom.version = "0.0.2"
+            pom.packaging = "aar"
+        }
+    }
+}

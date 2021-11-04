@@ -1,0 +1,3 @@
+rootProject.name = "ProguardStudy"
+include ':app'
+include ':base_ui'
