@@ -1,0 +1,28 @@
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'kotlin'
+apply plugin: 'maven'
+
+buildscript {
+    ext.kotlin_version = "1.5.31"
+    ext.gradle_version = '4.0.2'
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.android.tools.build:gradle:$gradle_version"
+    }
+}
+
+repositories {
+    google()
+    jcenter()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // Android gradle plugin will allow us to access Android specific features
+    implementation "com.android.tools.build:gradle:$gradle_version"
+}

@@ -8,7 +8,10 @@ import android.graphics.Path;
 import android.graphics.RectF;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.LinearLayout;
+
+import com.zlove.study.base.utils.UIUtils;
 
 import androidx.annotation.Nullable;
 
@@ -56,6 +59,10 @@ public class RoundedLinearLayout extends LinearLayout {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
+
+        Log.d("RoundedLinearLayout", "onSizeChanged --- screenWidth --- "
+                + UIUtils.getScreenWidth(getContext()));
+
         if (mRadius == 0 || Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             setRadius(w, h);
         }

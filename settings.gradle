@@ -1,3 +1,4 @@
 rootProject.name = "ProguardStudy"
 include ':app'
 include ':base_ui'
+include ':base_utils'

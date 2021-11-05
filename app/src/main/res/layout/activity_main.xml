@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zlove.study.base.ui.RoundedLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_margin="12dp"
+    android:layout_height="100dp"
+    android:orientation="vertical"
+    android:background="@color/purple_200"
+    app:rounded_radius="8dp">
+
+</com.zlove.study.base.ui.RoundedLinearLayout>
