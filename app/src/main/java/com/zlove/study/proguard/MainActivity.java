@@ -1,12 +1,14 @@
 package com.zlove.study.proguard;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
 
-import com.zlove.study.proguard.utils.ShrinkUtils;
+import com.zlove.study.proguard.bean.Worker;
+import com.zlove.study.proguard.utils.GenerateWorkerFactory;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatTextView;
 
 /**
  * Author by zlove, Email zlove.zhang@bytedance.com, Date on 2021/11/7.
@@ -14,15 +16,22 @@ import androidx.appcompat.widget.AppCompatTextView;
  */
 public class MainActivity extends AppCompatActivity {
 
-    private AppCompatTextView textView;
+    private TextView tvTest;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView = findViewById(R.id.test);
+        tvTest = findViewById(R.id.test);
 
-        textView.setText(String.valueOf(ShrinkUtils.generatePerson().getAge()));
-
+        Worker worker = GenerateWorkerFactory.generateWorker();
+        String content = "Worker Name: " + worker.getName() + ", Worker Age: " + worker.getAge();
+        tvTest.setText(content);
+        log();
     }
+
+    private void log() {
+        Log.d("MainActivity", "textview content: " + tvTest.getText());
+    }
+
 }
