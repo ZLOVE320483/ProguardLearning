@@ -1,7 +1,6 @@
 package com.zlove.study.proguard;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.zlove.study.proguard.bean.Worker;
@@ -25,13 +24,11 @@ public class MainActivity extends AppCompatActivity {
         tvTest = findViewById(R.id.test);
 
         Worker worker = GenerateWorkerFactory.generateWorker();
-        String content = "Worker Name: " + worker.getName() + ", Worker Age: " + worker.getAge();
-        tvTest.setText(content);
-        log();
-    }
-
-    private void log() {
-        Log.d("MainActivity", "textview content: " + tvTest.getText());
+        if (worker != null) {
+            String content = "Worker Name: " + worker.getName() + ", Worker Age: " + worker.getAge();
+            tvTest.setText(content + "\n" + Worker.class.getName());
+            worker.printName();
+        }
     }
 
 }

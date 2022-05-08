@@ -1,50 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
-//apply plugin: 'myplugin'
-
-//apply plugin: 'bytex'
-//apply plugin: 'bytex.method_call_opt'
-//
-//method_call_opt {
-// 	enable true //建议开发模式关闭
-// 	enableInDebug false
-// 	logLevel "DEBUG"
-// 	//是否在log中显示删除方法调用指令后的方法指令，一般调试时使用
-// 	showAfterOptInsLog false
-// 	//需要删除的方法配置
-// 	methodList = [
-//         //下面的每一项配置必须严格按照数据配置，一个地方不对这一项不生效。
-//         //class#method#desc
-//         "android/util/Log#v#(Ljava/lang/String;Ljava/lang/String;)I",
-//         "android/util/Log#v#(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I",
-//         "android/util/Log#d#(Ljava/lang/String;Ljava/lang/String;)I",
-//         "android/util/Log#d#(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I",
-//         "android/util/Log#i#(Ljava/lang/String;Ljava/lang/String;)I",
-//         "android/util/Log#i#(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I",
-//         "android/util/Log#w#(Ljava/lang/String;Ljava/lang/String;)I",
-//         "android/util/Log#w#(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I",
-//         "android/util/Log#e#(Ljava/lang/String;Ljava/lang/String;)I",
-//         "android/util/Log#e#(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I",
-//         "android/util/Log#println#(ILjava/lang/String;Ljava/lang/String;)I",
-//
-//         "java/lang/Throwable#printStackTrace#()V",
-//         "com/google/devtools/build/android/desugar/runtime/ThrowableExtension#printStackTrace#(Ljava/lang/Throwable;)V"
-//
-//         //还有自己项目中封装的Logger方法
-// 	]
-// 	onlyCheckList = [
-//         //"com/ss/*",
-//         //"com/bytedance/*"
-// 	]
-//
-// 	whiteList = [
-//         "com/facebook/stetho*",
-// 	]
-// }
-
-
-
 android {
     compileSdkVersion 29
 
@@ -69,7 +25,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
