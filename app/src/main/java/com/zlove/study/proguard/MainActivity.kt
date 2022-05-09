@@ -6,9 +6,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.*
 
 /**
  * Author by zlove, Email zlove.zhang@bytedance.com, Date on 2022/5/8.
@@ -33,11 +31,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         lifecycleScope.launch {
-            createFlow().collect {
-                Log.d("MainActivity", "=== collect ---> $it ===")
-                mFlowText.text = it.toString()
+            createFlow()
+                .flowOn(Dispatchers.IO)
+                .catch {
+
+                }
+                .onCompletion {
+
+                }
+                .collect {
+                    mFlowText.text = it.toString()
             }
         }
+
     }
 
     // 3. 销毁的时候释放
@@ -48,7 +54,6 @@ class MainActivity : AppCompatActivity() {
 
     private suspend fun getResult(num: Int): Int {
        return withContext(Dispatchers.IO) {
-            Log.d("MainActivity", "=== getResult: ${Thread.currentThread().name} ===")
             delay(1000)
             num * num
         }
@@ -56,7 +61,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun createFlow(): Flow<Int> = flow {
         for (i in 1..10) {
-            Log.d("MainActivity", "=== createFlow: emit ---> $i ===")
             emit(i)
         }
     }
